@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqf7l7rnqkdj1"]
+
+[ext_resource type="PackedScene" uid="uid://bgrpkmgqnlicd" path="res://src/characters/Character.tscn" id="1_qdyar"]
+[ext_resource type="Texture2D" uid="uid://d2xu7w1uq72i" path="res://assets/art/characters/player.png" id="2_ctnea"]
+
+[node name="PlayableCharacter" instance=ExtResource("1_qdyar")]
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("2_ctnea")
+centered = false
+offset = Vector2(-24, -48)
+hframes = 10
+vframes = 10

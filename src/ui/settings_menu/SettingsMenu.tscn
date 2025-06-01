@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwe38ssxqii1y"]
 
-[ext_resource type="Script" path="res://src/ui/settings_menu/SettingsMenu.gd" id="1_c658r"]
-[ext_resource type="Script" path="res://src/ui/default_button/DefaultButton.gd" id="2_cqrt1"]
+[ext_resource type="Script" uid="uid://eefuvkye2l75" path="res://src/ui/settings_menu/SettingsMenu.gd" id="1_c658r"]
+[ext_resource type="Script" uid="uid://bympb3ojvs7bq" path="res://src/ui/default_button/DefaultButton.gd" id="2_cqrt1"]
 [ext_resource type="Theme" uid="uid://gns8b3cfwrab" path="res://src/ui/themes/default_theme.tres" id="3_k6pq7"]
 
 [node name="SettingsMenu" type="Node2D"]

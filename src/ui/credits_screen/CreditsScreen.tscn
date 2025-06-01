@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqpjfmjooblpq"]
 
-[ext_resource type="Script" path="res://src/ui/default_button/DefaultButton.gd" id="1_8d1c4"]
-[ext_resource type="Script" path="res://src/ui/credits_screen/CreditsScreen.gd" id="1_271t8"]
+[ext_resource type="Script" uid="uid://bympb3ojvs7bq" path="res://src/ui/default_button/DefaultButton.gd" id="1_8d1c4"]
+[ext_resource type="Script" uid="uid://t8xcy4syt0n8" path="res://src/ui/credits_screen/CreditsScreen.gd" id="1_271t8"]
 
 [node name="CreditsScreen" type="Node2D"]
 script = ExtResource("1_271t8")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byutve6ppmvh4"]
+
+[ext_resource type="PackedScene" uid="uid://db38pkk8qfotc" path="res://src/managers/stage_manager/StageManager.tscn" id="1_4r04j"]
+[ext_resource type="PackedScene" uid="uid://bqf7l7rnqkdj1" path="res://src/characters/PlayableCharacters/PlayableCharacter.tscn" id="2_psl6d"]
+
+[node name="LevelManager" type="Node2D"]
+
+[node name="StageManager" parent="." instance=ExtResource("1_4r04j")]
+
+[node name="PlayableCharacter" parent="." instance=ExtResource("2_psl6d")]
+position = Vector2(32, 48)

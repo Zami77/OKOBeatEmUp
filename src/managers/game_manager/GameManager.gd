@@ -54,4 +54,3 @@ func _on_main_menu_option_selected(option: MainMenu.Option) -> void:
 			_load_scene(ScenePaths.credits_screen)
 		MainMenu.Option.EXIT_GAME:
 			get_tree().quit()
-
