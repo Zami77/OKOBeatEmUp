@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvegvfnx76h6"]
+
+[ext_resource type="Script" path="res://src/managers/game_manager/GameManager.gd" id="1_35fca"]
+[ext_resource type="PackedScene" uid="uid://c1u5r4fa0w6n5" path="res://src/ui/transition_screen/TransitionScreen.tscn" id="2_nwysd"]
+[ext_resource type="PackedScene" uid="uid://cu5oih14oi3la" path="res://src/managers/camera_manager/CameraManager.tscn" id="3_hi0xb"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_35fca")
+
+[node name="TransitionScreen" parent="." instance=ExtResource("2_nwysd")]
+
+[node name="CameraManager" parent="." instance=ExtResource("3_hi0xb")]

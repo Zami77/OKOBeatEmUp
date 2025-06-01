@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1gfybq43tskk"]
+
+[ext_resource type="Script" path="res://src/ui/default_button/DefaultButton.gd" id="1_8va8m"]
+[ext_resource type="Theme" uid="uid://gns8b3cfwrab" path="res://src/ui/themes/default_theme.tres" id="1_rhbcd"]
+
+[node name="DefaultButton" type="Button"]
+theme = ExtResource("1_rhbcd")
+script = ExtResource("1_8va8m")

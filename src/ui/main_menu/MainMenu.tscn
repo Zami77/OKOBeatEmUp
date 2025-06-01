@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://q75teokjs3xd"]
+
+[ext_resource type="Script" path="res://src/ui/main_menu/MainMenu.gd" id="1_o5udl"]
+[ext_resource type="Theme" uid="uid://gns8b3cfwrab" path="res://src/ui/themes/default_theme.tres" id="1_ry7bh"]
+[ext_resource type="Script" path="res://src/ui/default_button/DefaultButton.gd" id="2_drprm"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_o5udl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 896.0
+offset_bottom = 256.0
+theme = ExtResource("1_ry7bh")
+theme_override_font_sizes/font_size = 64
+text = "Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 256.0
+offset_top = 352.0
+offset_right = 896.0
+offset_bottom = 704.0
+theme = ExtResource("1_ry7bh")
+alignment = 1
+
+[node name="PlayGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play Game"
+script = ExtResource("2_drprm")
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+script = ExtResource("2_drprm")
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+script = ExtResource("2_drprm")
+
+[node name="ExitGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit Game"
+script = ExtResource("2_drprm")
