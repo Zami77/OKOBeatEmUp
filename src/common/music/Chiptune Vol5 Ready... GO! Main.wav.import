@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cu6lc7rmf7jln"
+path="res://.godot/imported/Chiptune Vol5 Ready... GO! Main.wav-cbb47a35f5f1fcdf181bc5b178f1492c.sample"
+
+[deps]
+
+source_file="res://src/common/music/Chiptune Vol5 Ready... GO! Main.wav"
+dest_files=["res://.godot/imported/Chiptune Vol5 Ready... GO! Main.wav-cbb47a35f5f1fcdf181bc5b178f1492c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

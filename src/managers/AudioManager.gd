@@ -1,6 +1,7 @@
 extends Node
 
-enum BgmPlaying { MAIN_MENU, NONE }
+enum BgmPlaying { MAIN_MENU, NONE, LEVEL_THEME }
+enum LevelSoundtrack { LEVEL_ONE }
 
 var num_players = 16
 static var bus_master = "Master"
@@ -18,9 +19,11 @@ var button_press = "res://src/ui/default_button/FA_Confirm_Button_1_1.wav"
 var button_hover = "res://src/ui/default_button/button_hover.wav"
 
 var main_menu_songs = [
-	"res://src/common/music/Fantasy Exploration Main.wav"
+	"res://src/common/music/Chiptune Vol5 Meteorite Main.wav"
 ]
 var main_menu_bag = []
+
+const level_one_song = "res://src/common/music/Chiptune Vol5 Ready... GO! Main.wav"
 
 func _ready():
 	for i in num_players:
@@ -62,6 +65,11 @@ func play_menu_theme() -> void:
 	_fill_bags()
 	bgm_playing = BgmPlaying.MAIN_MENU
 	play_bgm(main_menu_bag.pop_at(rng.randi_range(0, len(main_menu_bag) - 1)))
+
+func play_level_theme(level_soundtrack: LevelSoundtrack) -> void:
+	_fill_bags()
+	bgm_playing = BgmPlaying.LEVEL_THEME
+	play_bgm(level_one_song)
 	
 func _fadeout_bgm():
 	bgm_player.stop()

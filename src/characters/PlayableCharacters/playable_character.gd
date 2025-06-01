@@ -1,0 +1,2 @@
+class_name PlayableCharacter
+extends Character

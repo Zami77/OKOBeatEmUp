@@ -1,11 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://byutve6ppmvh4"]
+[gd_scene load_steps=6 format=3 uid="uid://byutve6ppmvh4"]
 
 [ext_resource type="PackedScene" uid="uid://db38pkk8qfotc" path="res://src/managers/stage_manager/StageManager.tscn" id="1_4r04j"]
+[ext_resource type="Script" uid="uid://dqfu4bwyfqhke" path="res://src/managers/level_manager/level_manager.gd" id="1_akbng"]
 [ext_resource type="PackedScene" uid="uid://bqf7l7rnqkdj1" path="res://src/characters/PlayableCharacters/PlayableCharacter.tscn" id="2_psl6d"]
+[ext_resource type="PackedScene" uid="uid://74q56nes1w03" path="res://src/props/Barrel.tscn" id="4_nsj8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akbng"]
+size = Vector2(20, 90)
 
 [node name="LevelManager" type="Node2D"]
+script = ExtResource("1_akbng")
 
 [node name="StageManager" parent="." instance=ExtResource("1_4r04j")]
 
-[node name="PlayableCharacter" parent="." instance=ExtResource("2_psl6d")]
+[node name="LevelCamera" type="Camera2D" parent="."]
+position = Vector2(57, 32)
+zoom = Vector2(10.1, 10.1)
+
+[node name="InvisibleWalls" type="Node2D" parent="LevelCamera"]
+position = Vector2(-57, -24)
+
+[node name="LeftWall" type="StaticBody2D" parent="LevelCamera/InvisibleWalls"]
+position = Vector2(-8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCamera/InvisibleWalls/LeftWall"]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_akbng")
+
+[node name="RightWall" type="StaticBody2D" parent="LevelCamera/InvisibleWalls"]
+position = Vector2(123, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCamera/InvisibleWalls/RightWall"]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_akbng")
+
+[node name="EntityContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PlayableCharacter" parent="EntityContainer" instance=ExtResource("2_psl6d")]
 position = Vector2(32, 48)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Barrel" parent="EntityContainer" instance=ExtResource("4_nsj8t")]
+position = Vector2(88, 40)
+
+[node name="Barrel2" parent="EntityContainer" instance=ExtResource("4_nsj8t")]
+position = Vector2(144, 48)

@@ -4,7 +4,7 @@ extends Node2D
 @export_file("*.tscn", "*.scn") var default_scene = "res://src/ui/main_menu/MainMenu.tscn"
 
 @onready var transition_screen: TransitionScreen = $TransitionScreen
-@onready var camera: CameraManager = $CameraManager
+#@onready var camera: CameraManager = $CameraManager
 
 var current_scene = null
 
@@ -46,8 +46,7 @@ func _on_back_to_main_menu() -> void:
 func _on_main_menu_option_selected(option: MainMenu.Option) -> void:
 	match option:
 		MainMenu.Option.PLAY_GAME:
-			push_error("There's no game to go to! Add your game scene here!")
-			#_load_scene("PUT_YOUR_GAME_SCENE_PATH_HERE")
+			_load_scene(ScenePaths.level_manager)
 		MainMenu.Option.SETTINGS:
 			_load_scene(ScenePaths.settings_menu)
 		MainMenu.Option.CREDITS:

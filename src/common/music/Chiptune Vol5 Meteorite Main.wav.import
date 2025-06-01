@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dla1hi3ctp160"
+path="res://.godot/imported/Chiptune Vol5 Meteorite Main.wav-c095d326e4c5cb00b493bb16f56e77c8.sample"
+
+[deps]
+
+source_file="res://src/common/music/Chiptune Vol5 Meteorite Main.wav"
+dest_files=["res://.godot/imported/Chiptune Vol5 Meteorite Main.wav-c095d326e4c5cb00b493bb16f56e77c8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
