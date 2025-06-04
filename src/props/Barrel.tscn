@@ -14,6 +14,7 @@ size = Vector2(10, 14)
 [node name="Barrel" type="StaticBody2D"]
 position = Vector2(0, -16)
 script = ExtResource("1_dgifh")
+knockback_intensity = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_042k0")

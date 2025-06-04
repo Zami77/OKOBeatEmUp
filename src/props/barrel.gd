@@ -6,8 +6,6 @@ extends StaticBody2D
 
 enum BarrelState { IDLE, DESTROYED }
 
-const GRAVITY = 600
-
 var velocity := Vector2.ZERO
 var height:= 0.0
 var height_speed := 0.0
@@ -36,4 +34,4 @@ func _handle_air_time(delta: float) -> void:
 			height = 0
 			queue_free()
 		else:
-			height_speed -= GRAVITY * delta
+			height_speed -= Constants.GRAVITY * delta

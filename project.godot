@@ -26,6 +26,10 @@ SettingsManager="*res://src/managers/SettingsManager.gd"
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[dotnet]
+
+project/assembly_name="OKO Beat Em Up"
+
 [input]
 
 attack={
