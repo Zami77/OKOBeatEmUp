@@ -30,3 +30,6 @@ shape = SubResource("CapsuleShape2D_0vwpq")
 [node name="DamageEmitter" parent="." instance=ExtResource("3_pst11")]
 
 [node name="DamageReceiver" parent="." instance=ExtResource("4_ax0s0")]
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]

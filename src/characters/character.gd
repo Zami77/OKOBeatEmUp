@@ -3,15 +3,17 @@ extends CharacterBody2D
 class_name Character
 
 @export var damage: int = 3
-@export var health: int = 10
+@export var max_health: int = 10
 @export var speed: float = 30
 @export var jump_intensity: float = 100
+@export var knockback_intensity := 0.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var character_sprite: Sprite2D = $CharacterSprite
 @onready var damage_emitter: Area2D = $DamageEmitter
+@onready var damage_receiver: DamageReceiver = $DamageReceiver
 
-enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING, JUMPKICK }
+enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING, JUMPKICK, HURT }
 
 const state_animation_map := {
 	CharacterState.IDLE: "idle",
@@ -20,14 +22,18 @@ const state_animation_map := {
 	CharacterState.TAKEOFF: "takeoff",
 	CharacterState.JUMP: "jump",
 	CharacterState.LANDING: "landing",
-	CharacterState.JUMPKICK: "jumpkick"
+	CharacterState.JUMPKICK: "jumpkick",
+	CharacterState.HURT: "hurt"
 }
 var character_state = CharacterState.IDLE
 var height := 0.0
 var height_speed := 0.0
+var current_health := 0
 
 func _ready() -> void:
 	damage_emitter.area_entered.connect(_on_emit_damage.bind())
+	damage_receiver.damage_received.connect(_on_receive_damage.bind())
+	current_health = max_health
 	
 func _process(delta: float) -> void:
 	_handle_input()
@@ -44,18 +50,8 @@ func _handle_movement():
 		else:
 			character_state = CharacterState.WALK
 	
-func _handle_input():
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction  * speed
-	
-	if Input.is_action_just_pressed("attack") and can_attack():
-		character_state = CharacterState.ATTACK
-	
-	if can_jump() and Input.is_action_just_pressed("jump"):
-		character_state = CharacterState.TAKEOFF
-	
-	if can_jumpkick() and Input.is_action_just_pressed("attack"):
-		character_state = CharacterState.JUMPKICK
+func _handle_input() -> void:
+	pass
 
 func _handle_animations() -> void:
 	animation_player.play(state_animation_map[character_state])
@@ -108,3 +104,14 @@ func _on_emit_damage(damage_receiver: DamageReceiver) -> void:
 	var direction := Vector2.LEFT if damage_receiver.global_position.x < global_position.x else Vector2.RIGHT
 	damage_receiver.damage_received.emit(damage, direction)
 	print(damage_receiver)
+
+func _on_receive_damage(damage: int, direction: Vector2) -> void:
+	character_state = CharacterState.HURT
+	current_health = clamp(current_health - damage, 0, max_health)
+	
+	velocity = direction * knockback_intensity
+	
+	AudioManager.play_hit_sfx()
+	
+	if current_health <= 0:
+		queue_free()

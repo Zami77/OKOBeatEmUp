@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://byutve6ppmvh4"]
+[gd_scene load_steps=7 format=3 uid="uid://byutve6ppmvh4"]
 
 [ext_resource type="PackedScene" uid="uid://db38pkk8qfotc" path="res://src/managers/stage_manager/StageManager.tscn" id="1_4r04j"]
 [ext_resource type="Script" uid="uid://dqfu4bwyfqhke" path="res://src/managers/level_manager/level_manager.gd" id="1_akbng"]
 [ext_resource type="PackedScene" uid="uid://bqf7l7rnqkdj1" path="res://src/characters/PlayableCharacters/PlayableCharacter.tscn" id="2_psl6d"]
 [ext_resource type="PackedScene" uid="uid://74q56nes1w03" path="res://src/props/Barrel.tscn" id="4_nsj8t"]
+[ext_resource type="PackedScene" uid="uid://gj2t17rhlsin" path="res://src/characters/EnemyCharacters/BasicEnemy.tscn" id="5_jp28g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akbng"]
 size = Vector2(20, 90)
@@ -47,3 +48,11 @@ position = Vector2(88, 40)
 
 [node name="Barrel2" parent="EntityContainer" instance=ExtResource("4_nsj8t")]
 position = Vector2(144, 48)
+
+[node name="BasicEnemy" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
+position = Vector2(64, 56)
+player = NodePath("../PlayableCharacter")
+
+[node name="BasicEnemy2" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
+position = Vector2(176, 48)
+player = NodePath("../PlayableCharacter")

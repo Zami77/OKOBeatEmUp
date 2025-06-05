@@ -23,6 +23,12 @@ var main_menu_songs = [
 ]
 var main_menu_bag = []
 
+var hit_sfx = [
+	"res://assets/sfx/hit-1.wav",
+	"res://assets/sfx/hit-2.wav"
+]
+var hit_sfx_bag = []
+
 const level_one_song = "res://src/common/music/Chiptune Vol5 Ready... GO! Main.wav"
 
 func _ready():
@@ -70,6 +76,10 @@ func play_level_theme(level_soundtrack: LevelSoundtrack) -> void:
 	_fill_bags()
 	bgm_playing = BgmPlaying.LEVEL_THEME
 	play_bgm(level_one_song)
+
+func play_hit_sfx() -> void:
+	_fill_bags()
+	play_sfx(hit_sfx_bag.pop_front())
 	
 func _fadeout_bgm():
 	bgm_player.stop()
@@ -83,6 +93,8 @@ func play_button_hover() -> void:
 func _fill_bags() -> void:
 	if not main_menu_bag:
 		main_menu_bag = main_menu_songs.duplicate()
+	if not hit_sfx_bag:
+		hit_sfx_bag = hit_sfx.duplicate()
 
 func _process(_delta):
 	if not sfx_queue.is_empty() and not available_players.is_empty():
