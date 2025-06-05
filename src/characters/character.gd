@@ -11,7 +11,7 @@ class_name Character
 @onready var character_sprite: Sprite2D = $CharacterSprite
 @onready var damage_emitter: Area2D = $DamageEmitter
 
-enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING }
+enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING, JUMPKICK }
 
 const state_animation_map := {
 	CharacterState.IDLE: "idle",
@@ -19,7 +19,8 @@ const state_animation_map := {
 	CharacterState.ATTACK: "punch",
 	CharacterState.TAKEOFF: "takeoff",
 	CharacterState.JUMP: "jump",
-	CharacterState.LANDING: "landing"
+	CharacterState.LANDING: "landing",
+	CharacterState.JUMPKICK: "jumpkick"
 }
 var character_state = CharacterState.IDLE
 var height := 0.0
@@ -37,14 +38,11 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _handle_movement():
-	if not can_move():
-		velocity = Vector2.ZERO
-		return
-	
-	if velocity.length() == 0:
-		character_state = CharacterState.IDLE
-	else:
-		character_state = CharacterState.WALK
+	if can_move():
+		if velocity.length() == 0:
+			character_state = CharacterState.IDLE
+		else:
+			character_state = CharacterState.WALK
 	
 func _handle_input():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -55,12 +53,15 @@ func _handle_input():
 	
 	if can_jump() and Input.is_action_just_pressed("jump"):
 		character_state = CharacterState.TAKEOFF
+	
+	if can_jumpkick() and Input.is_action_just_pressed("attack"):
+		character_state = CharacterState.JUMPKICK
 
 func _handle_animations() -> void:
 	animation_player.play(state_animation_map[character_state])
 
 func _handle_airtime(delta: float) -> void:
-	if not character_state == CharacterState.JUMP:
+	if not character_state == CharacterState.JUMP and not character_state == CharacterState.JUMPKICK:
 		return
 	
 	height += height_speed * delta
@@ -89,6 +90,9 @@ func can_move() -> bool:
 
 func can_jump() -> bool:
 	return character_state == CharacterState.IDLE or character_state == CharacterState.WALK
+
+func can_jumpkick() -> bool:
+	return character_state == CharacterState.JUMP
  
 func _on_action_complete() -> void:
 	character_state = CharacterState.IDLE
