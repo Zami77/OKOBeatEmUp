@@ -1,24 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://gj2t17rhlsin"]
+[gd_scene load_steps=14 format=3 uid="uid://gj2t17rhlsin"]
 
 [ext_resource type="PackedScene" uid="uid://bgrpkmgqnlicd" path="res://src/characters/Character.tscn" id="1_qpq03"]
 [ext_resource type="Texture2D" uid="uid://b6xj6bpjjhxdv" path="res://assets/art/characters/enemy_punk.png" id="2_73rej"]
 [ext_resource type="Script" uid="uid://cbwlnls1mtpt5" path="res://src/characters/EnemyCharacters/basic_enemy.gd" id="2_hbemo"]
-
-[sub_resource type="Animation" id="Animation_73rej"]
-resource_name = "idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_hbemo"]
 length = 0.001
@@ -33,24 +17,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_d37ah"]
-resource_name = "walk"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13, 14, 15, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_qxphw"]
@@ -84,11 +50,125 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_73rej"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d37ah"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_vtqkt"]
+resource_name = "fall"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [51]
+}
+
+[sub_resource type="Animation" id="Animation_rwkgq"]
+resource_name = "grounded"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [52]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_landing_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pcoxa"]
+resource_name = "landing"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [70]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_action_complete"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d37ah"]
 _data = {
 &"RESET": SubResource("Animation_hbemo"),
+&"fall": SubResource("Animation_vtqkt"),
+&"grounded": SubResource("Animation_rwkgq"),
 &"hurt": SubResource("Animation_qxphw"),
 &"idle": SubResource("Animation_73rej"),
+&"landing": SubResource("Animation_pcoxa"),
 &"walk": SubResource("Animation_d37ah")
 }
 
@@ -102,6 +182,7 @@ size = Vector2(10, 10)
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("2_hbemo")
+player_adjacency_threshold = 1
 knockback_intensity = 40.0
 
 [node name="CharacterSprite" parent="." index="1"]

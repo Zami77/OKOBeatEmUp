@@ -15,6 +15,6 @@ const level_name_to_soundtrack_map = {
 func _ready() -> void:
 	AudioManager.play_level_theme(level_name_to_soundtrack_map[level_name])
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player.position.x > camera.position.x:
 		camera.position.x = player.position.x

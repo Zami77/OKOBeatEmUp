@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	sprite.position = Vector2.UP * height
 	_handle_air_time(delta)
 
-func _on_receive_damage(damage: int, direction: Vector2) -> void:
+func _on_receive_damage(_damage_received: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
 	if barrel_state == BarrelState.IDLE:
 		sprite.frame = 1 # TODO: Should use animation player
 		barrel_state = BarrelState.DESTROYED

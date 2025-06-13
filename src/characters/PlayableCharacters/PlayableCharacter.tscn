@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqf7l7rnqkdj1"]
+[gd_scene load_steps=16 format=3 uid="uid://bqf7l7rnqkdj1"]
 
 [ext_resource type="PackedScene" uid="uid://bgrpkmgqnlicd" path="res://src/characters/Character.tscn" id="1_qdyar"]
 [ext_resource type="Texture2D" uid="uid://d2xu7w1uq72i" path="res://assets/art/characters/player.png" id="2_ctnea"]
 [ext_resource type="Script" uid="uid://brb4y1cw7tda0" path="res://src/characters/PlayableCharacters/playable_character.gd" id="2_hv7qb"]
+[ext_resource type="Script" uid="uid://dadqp3j1dy3ps" path="res://src/characters/enemy_slot.gd" id="4_anouw"]
 
 [sub_resource type="Animation" id="Animation_anouw"]
 length = 0.001
@@ -63,6 +64,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [62]
+}
+
+[sub_resource type="Animation" id="Animation_n8md7"]
+resource_name = "jumpkick"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [63]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageEmitter:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_sowvh"]
@@ -199,34 +228,6 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13, 14, 15, 16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_n8md7"]
-resource_name = "jumpkick"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [63]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DamageEmitter:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8lapb"]
 _data = {
 &"RESET": SubResource("Animation_anouw"),
@@ -277,6 +278,28 @@ collision_mask = 0
 [node name="CollisionShape2D" parent="DamageReceiver" index="0"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_anouw")
+
+[node name="EnemySlots" type="Node2D" parent="." index="6"]
+
+[node name="EnemySlot" type="Node2D" parent="EnemySlots" index="0"]
+position = Vector2(-16, 0)
+script = ExtResource("4_anouw")
+metadata/_custom_type_script = "uid://dadqp3j1dy3ps"
+
+[node name="EnemySlot2" type="Node2D" parent="EnemySlots" index="1"]
+position = Vector2(16, 0)
+script = ExtResource("4_anouw")
+metadata/_custom_type_script = "uid://dadqp3j1dy3ps"
+
+[node name="EnemySlot3" type="Node2D" parent="EnemySlots" index="2"]
+position = Vector2(-16, -8)
+script = ExtResource("4_anouw")
+metadata/_custom_type_script = "uid://dadqp3j1dy3ps"
+
+[node name="EnemySlot4" type="Node2D" parent="EnemySlots" index="3"]
+position = Vector2(16, -8)
+script = ExtResource("4_anouw")
+metadata/_custom_type_script = "uid://dadqp3j1dy3ps"
 
 [editable path="DamageEmitter"]
 [editable path="DamageReceiver"]
