@@ -45,33 +45,26 @@ collision_mask = 1
 
 [node name="Barrel" parent="EntityContainer" instance=ExtResource("4_nsj8t")]
 position = Vector2(88, 40)
-knockback_intensity = 50.0
 
 [node name="Barrel2" parent="EntityContainer" instance=ExtResource("4_nsj8t")]
 position = Vector2(144, 48)
-knockback_intensity = 50.0
 
 [node name="BasicEnemy" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
 position = Vector2(64, 56)
 player = NodePath("../PlayableCharacter")
-player_adjacency_threshold = 1
 
 [node name="BasicEnemy2" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
 position = Vector2(176, 48)
 player = NodePath("../PlayableCharacter")
-player_adjacency_threshold = 1
 
 [node name="BasicEnemy3" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
 position = Vector2(160, 40)
 player = NodePath("../PlayableCharacter")
-player_adjacency_threshold = 1
 
 [node name="BasicEnemy4" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
 position = Vector2(200, 64)
 player = NodePath("../PlayableCharacter")
-player_adjacency_threshold = 1
 
 [node name="BasicEnemy5" parent="EntityContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_jp28g")]
 position = Vector2(0, 80)
 player = NodePath("../PlayableCharacter")
-player_adjacency_threshold = 1
