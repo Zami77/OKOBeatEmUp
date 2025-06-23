@@ -9,6 +9,7 @@ class_name Character
 @export var knockback_intensity := 0.0
 @export var knockdown_intensity := 30
 @export var grounded_duration:= 10
+@export var can_respawn := false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var character_sprite: Sprite2D = $CharacterSprite
@@ -16,7 +17,7 @@ class_name Character
 @onready var damage_receiver: DamageReceiver = $DamageReceiver
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING, JUMPKICK, HURT, FALL, GROUNDED }
+enum CharacterState { IDLE, WALK, ATTACK, TAKEOFF, JUMP, LANDING, JUMPKICK, HURT, FALL, GROUNDED, DEATH }
 
 const state_animation_map := {
 	CharacterState.IDLE: "idle",
